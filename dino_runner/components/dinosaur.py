@@ -32,10 +32,10 @@ class Dinosaur(Sprite):
         elif self.action == DUCKING_ACTION:
             self.duck()
    
-        if user_input[pygame.K_UP]:
+        if user_input[pygame.K_UP] and self.action != JUMPING_ACTION:
             self.action = JUMPING_ACTION
         
-        if user_input[pygame.K_DOWN]:
+        if user_input[pygame.K_DOWN] and self.action != JUMPING_ACTION:
             self.action = DUCKING_ACTION
       
         if self.step >= 9:
