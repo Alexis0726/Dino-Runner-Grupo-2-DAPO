@@ -37,6 +37,7 @@ class Game:
         # Game loop: events - update - draw
         self.playing = True
         self.obstacle_manager.reset_obstacles()
+        self.score.points = 0
         while self.playing:
             self.events()
             self.update()
@@ -82,7 +83,7 @@ class Game:
         if self.death_count ==0:
             self.menu.draw(self.screen)
         else:
-            self.menu.update_message("game over")
+            self.menu.update_message(f"{self.score.MAX_POINT}")
             self.menu.draw(self.screen)
 
         self.screen.blit(DINO_START, (half_screen_width - 30, half_screen_height - 140))
