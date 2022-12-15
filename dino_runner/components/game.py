@@ -5,7 +5,9 @@ from dino_runner.components.score import Score
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.obstacles.obstacle_manager import ObstaclesManager
 
+
 class Game:
+    GAME_SPEED = 20
     def __init__(self):
         pygame.init()
         pygame.display.set_caption(TITLE)
@@ -38,6 +40,7 @@ class Game:
         self.playing = True
         self.obstacle_manager.reset_obstacles()
         self.score.points = 0
+        self.game_speed = self.GAME_SPEED
         while self.playing:
             self.events()
             self.update()
@@ -83,7 +86,7 @@ class Game:
         if self.death_count ==0:
             self.menu.draw(self.screen)
         else:
-            self.menu.update_message(f"{self.score.MAX_POINT}")
+            self.menu.update_message("Game over", f"Your Score: {self.score.points}", f"Highest score: {self.score.MAX_POINT}", f"Total deaths: {self.death_count}")
             self.menu.draw(self.screen)
 
         self.screen.blit(DINO_START, (half_screen_width - 30, half_screen_height - 140))
