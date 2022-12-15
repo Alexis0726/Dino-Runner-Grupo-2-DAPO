@@ -22,6 +22,7 @@ class ObstaclesManager:
             if obstacle.rect.colliderect(game.player.rect):
                 pygame.time.delay(500)
                 game.playing = False
+                game.death_count += 1
 
     def draw(self,screen):
         for obstacle in self.obstacles:

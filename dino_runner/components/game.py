@@ -1,5 +1,5 @@
 import pygame
-
+from dino_runner.components.menu  import Menu
 from dino_runner.utils.constants import BG, DINO_START, FONT_STYLE, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS
 from dino_runner.components.score import Score
 from dino_runner.components.dinosaur import Dinosaur
@@ -16,10 +16,12 @@ class Game:
         self.game_speed = 20
         self.x_pos_bg = 0
         self.y_pos_bg = 380
+        self.menu = Menu("Press any key to start ", self.screen)
 
         self.player = Dinosaur()
         self.obstacle_manager = ObstaclesManager()
         self.score = Score()
+        self.death_count = 0
         self.executing = False
 
     def execute(self):
@@ -73,24 +75,18 @@ class Game:
         self.x_pos_bg -= self.game_speed
 
     def show_menu(self):
-        self.screen.fill((255,255,255))
+        self.menu.reset_screen_color(self.screen)
         half_screen_width = SCREEN_WIDTH // 2
         half_screen_height = SCREEN_HEIGHT // 2
 
-        font = pygame.font.Font(FONT_STYLE, 30)
-        message = font.render("Press any key to start ",  True, (0,0,0))
-        message_rect = message.get_rect()
-        message_rect.center = (half_screen_width, half_screen_height)
-        self.screen.blit(message, message_rect)
+        if self.death_count ==0:
+            self.menu.draw(self.screen)
+        else:
+            self.menu.update_message("game over")
+            self.menu.draw(self.screen)
 
         self.screen.blit(DINO_START, (half_screen_width - 30, half_screen_height - 140))
-        pygame.display.update()
+       
+        self.menu.update(self)
 
-        self.handle_menu_events()
-
-    def handle_menu_events(self):
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                self.executing = False
-            elif event.type == pygame.KEYDOWN:
-                self.run()
+   
