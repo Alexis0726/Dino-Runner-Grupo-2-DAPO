@@ -74,3 +74,4 @@ DINO_START = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoStart.png"))
 DEFAULT_TYPE = "default"
 
 FONT_STYLE = 'freesansbold.ttf'
+SHIELD_TYPE = "shield"
