@@ -19,7 +19,7 @@ class ObstaclesManager:
 
         for obstacle in self.obstacles:
             obstacle.update(game_speed, self.obstacles)
-            if obstacle.rect.colliderect(player.rect) and  on_death(self.obstacles):
+            if obstacle.rect.colliderect(player.rect) and on_death(self.obstacles):
                 player.image = DINO_DEAD
                 pygame.time.delay(2000)
                 
