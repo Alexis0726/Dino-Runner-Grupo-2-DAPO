@@ -62,7 +62,7 @@ BIRD = [
 ]
 
 CLOUD = pygame.image.load(os.path.join(IMG_DIR, 'Other/Cloud.png'))
-SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
+SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield2.png'))
 HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
 
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
@@ -70,8 +70,18 @@ BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
 HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 
 DINO_START = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoStart.png"))
+DINO_DEAD = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDead.png"))
 
 DEFAULT_TYPE = "default"
 
 FONT_STYLE = 'freesansbold.ttf'
 SHIELD_TYPE = "shield"
+HAMMER_TYPE = "hammer"
+FLY_TYPE = "fly"
+
+FLY_ICON = pygame.image.load(os.path.join(IMG_DIR, "Dino/helicopter.png"))
+
+FLYING = [
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/helicopter.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/helicopter1.png")),
+]
